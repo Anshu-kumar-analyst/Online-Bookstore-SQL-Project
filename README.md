@@ -1,64 +1,95 @@
-Online Bookstore SQL Project :-
-This project contains a comprehensive set of SQL scripts for setting up and managing a database for an online bookstore. The database schema includes tables for books, customers, and orders, and the queries are designed to perform various data retrieval and analytical tasks.
+# 📚 Online Bookstore SQL Project
 
-Features :-
-Database and Table Creation: The Sql Project.sql script includes commands to create a database named OnlineBookstore and three key tables: Books, Customers, and Orders, with appropriate data types and primary/foreign key relationships.
+This project contains a comprehensive set of SQL scripts for setting up and managing a database for an **Online Bookstore**.  
+The database schema includes tables for **Books**, **Customers**, and **Orders**, along with queries designed for data retrieval and analytical tasks.
 
-Data Import: The project uses COPY commands to import data from CSV files into the newly created tables, providing a populated dataset for analysis.
+---
 
-Basic Queries: Includes foundational SQL queries to retrieve data based on specific conditions, such as filtering books by genre, finding orders within a date range, and calculating totals.
+## 🚀 Features
 
-• Advanced Analysis: Features more complex queries using JOIN, GROUP BY, HAVING, and aggregate functions to answer business-critical questions, such as:
-• Finding the total number of books sold per genre.
-• Identifying the most frequently ordered book.
-• Calculating the total revenue.
-• Determining which customer has spent the most.
-• Calculating remaining stock after fulfilling all orders.
+- **Database & Table Creation**  
+  - The `Sql Project.sql` script creates a database named `OnlineBookstore`.  
+  - Three key tables: `Books`, `Customers`, and `Orders` with proper data types and primary/foreign key relationships.
 
-Getting Started :-
-To run this project on your local machine, you will need a PostgreSQL environment.
+- **Data Import**  
+  - Uses `COPY` commands to import data from CSV files.  
+  - Provides a populated dataset for testing and analysis.  
 
-Prerequisites: Ensure you have PostgreSQL installed and configured.
+- **Basic Queries**  
+  - Retrieve books by genre.  
+  - Find orders within a date range.  
+  - Calculate total sales amounts.  
 
-Create the Database: Run the initial command to create the database:
-• CREATE DATABASE OnlineBookstore;
-Execute the SQL Script: Open your SQL client (e.g., pgAdmin, DBeaver) and run the Sql Project.sql file.
+- **Advanced Analysis**  
+  - Total number of books sold per genre.  
+  - Identify the most frequently ordered book.  
+  - Calculate total revenue.  
+  - Determine the customer who spent the most.  
+  - Calculate remaining stock after fulfilling all orders.  
 
-Note on Data Paths: The COPY commands in the script use specific file paths (e.g., F:\PostgreSQL\All Excel Practice Files, D:\Course Updates\30 Day Series\SQL\CSV). You must update these paths to match the location of your CSV files on your own machine for the data import to work correctly.
+---
 
-Database Schema :-
-The database consists of the following tables:
+## 🛠️ Getting Started
+To run this project on your local machine, you will need a **PostgreSQL environment**.
 
-Books :-
-Book_ID (SERIAL PRIMARY KEY)
-Title (VARCHAR)
-Author (VARCHAR)
-Genre (VARCHAR)
-Published_Year (INT)
-Price (NUMERIC)
-Stock (INT)
+### ✅ Prerequisites
+- Install PostgreSQL and set it up on your machine.  
+- Ensure you have an SQL client (e.g., **pgAdmin**, **DBeaver**, or **psql** CLI).  
 
-Customers :-
-Customer_ID (SERIAL PRIMARY KEY)
-Name (VARCHAR)
-Email (VARCHAR)
-Phone (VARCHAR)
-City (VARCHAR)
-Country (VARCHAR)
+### ⚡ Setup Instructions
+-- Create Database
+CREATE DATABASE OnlineBookstore;
 
-Orders :-
-Order_ID (SERIAL PRIMARY KEY)
-Customer_ID (INT REFERENCES Customers)
-Book_ID (INT REFERENCES Books)
-Order_Date (DATE)
-Quantity (INT)
-Total_Amount (NUMERIC)
+-- Switch to the newly created database
+\c OnlineBookstore;
 
-Queries Included :-
-• The script is organized with comments to separate different queries. Some of the key queries are:
-• Retrieve all books in the "Fiction" genre.
-• Find the most expensive book.
-• Calculate the total revenue from all orders.
-• Find the customer who spent the most on orders.
+-- Create Books Table
+CREATE TABLE Books (
+    Book_ID SERIAL PRIMARY KEY,
+    Title VARCHAR(255) NOT NULL,
+    Author VARCHAR(150) NOT NULL,
+    Genre VARCHAR(100),
+    Published_Year INT,
+    Price NUMERIC(10,2) NOT NULL,
+    Stock INT DEFAULT 0
+);
 
-Calculate the remaining stock after fulfilling all orders.
+-- Create Customers Table
+CREATE TABLE Customers (
+    Customer_ID SERIAL PRIMARY KEY,
+    Name VARCHAR(150) NOT NULL,
+    Email VARCHAR(150) UNIQUE NOT NULL,
+    Phone VARCHAR(20),
+    City VARCHAR(100),
+    Country VARCHAR(100)
+);
+
+-- Create Orders Table
+CREATE TABLE Orders (
+    Order_ID SERIAL PRIMARY KEY,
+    Customer_ID INT REFERENCES Customers(Customer_ID) ON DELETE CASCADE,
+    Book_ID INT REFERENCES Books(Book_ID) ON DELETE CASCADE,
+    Order_Date DATE NOT NULL DEFAULT CURRENT_DATE,
+    Quantity INT NOT NULL CHECK (Quantity > 0),
+    Total_Amount NUMERIC(12,2) NOT NULL
+);
+-- End of Script
+-- ✅ Database and tables created successfully!
+
+📊 Queries Included :-
+
+Some of the key queries implemented:
+ • Retrieve all books in the "Fiction" genre.
+ • Find the most expensive book.
+ • Calculate the total revenue from all orders.
+ • Find the customer who spent the most.
+ • Calculate the remaining stock after fulfilling all orders.
+
+📌 Notes :-
+
+ • Update CSV file paths in COPY commands before running the script.
+ • This project is built for PostgreSQL, but queries can be adapted for other SQL databases.
+ 
+---------------------------------------------------
+-- 🙏 Thank you for using the Online Bookstore SQL Project.
+
