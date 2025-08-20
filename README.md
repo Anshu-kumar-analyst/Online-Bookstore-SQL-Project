@@ -44,7 +44,8 @@ CREATE DATABASE OnlineBookstore;
 \c OnlineBookstore;
 
 -- Create Books Table
-```CREATE TABLE Books (
+```sql
+CREATE TABLE Books (
     Book_ID SERIAL PRIMARY KEY,
     Title VARCHAR(255) NOT NULL,
     Author VARCHAR(150) NOT NULL,
