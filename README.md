@@ -23,7 +23,7 @@ create database onlinebookstore;
 -- switch to the database
 \c onlinebookstore;
 ```
-***Table Creation: Create three tables:***<br>
+***2. Table Creation: Create three tables:***<br>
 ***Books:*** Stores book details such as title, author, genre, published year, price, and stock.<br>
 ```sql
 -- create tables
@@ -227,8 +227,8 @@ order by b.book_id;
 # How to Use
 
 1. ***Clone the Repository:*** Download or clone this project from GitHub to your local system.<br>
-2. ***Set Up the Database:*** Run the provided SQL script (online_bookstore_setup.sql) to create and populate the database.<br>
-3. ***Run the Queries:*** Execute the queries from the analysis_queries.sql file to analyze the dataset.<br>
+2. ***Set Up the Database:*** Run the provided SQL script (`online_bookstore_setup.sql`) to create and populate the database.<br>
+3. ***Run the Queries:*** Execute the queries from the `analysis_queries.sql` file to analyze the dataset.<br>
 4. ***Explore and Modify:*** Modify the queries or add new ones to answer additional business questions.<br>
 
 # Author - Anshu Kumar
@@ -239,10 +239,10 @@ This project is part of my portfolio, showcasing the SQL skills essential for da
 
 For more content on SQL, data analysis, and other data-related topics, make sure to follow me on social media and join our community:
 
-1. ***Instagram:*** Follow me for daily tips and updates<br>
-2. ***LinkedIn:*** Connect with me professionally<br>
-3. ***Discord:*** Join our community to learn and grow together<br>
-
+1. ***LinkedIn:*** [Connect with me professionally](https://www.linkedin.com/in/anshu-kumar-analysts/)<br>
+2. ***Discord:*** [Join our community to learn and grow together](https://example.com)<br>
+3. ***Instagram:*** [Follow me for daily tips and updates](https://www.instagram.com/me_anshu_kr/)<br>
+ 
 ***Thank you for your support, and I look forward to connecting with you!***
 
 
