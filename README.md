@@ -69,9 +69,9 @@ select * from orders;
 ```
 # 2. Data Exploration & Cleaning<br>
 
-1.***Record Count:*** Count total books, customers, and orders.<br>
-2.***Distinct Values:*** Identify unique genres in the books dataset.<br>
-3.***Null Value Check:*** Check for missing values in books, customers, and orders.<br>
+1. ***Record Count:*** Count total books, customers, and orders.<br>
+2. ***Distinct Values:*** Identify unique genres in the books dataset.<br>
+3. ***Null Value Check:*** Check for missing values in books, customers, and orders.<br>
 
 # 3. Data Analysis & Findings<br>
    
@@ -102,36 +102,36 @@ where order_date between '2023-11-01' and '2023-11-30';
 select sum(stock) as total_stocks
 from books;
 ```
-6) ***find the details of the most expensive book:***
+6) ***Find the details of the most expensive book:***
 ```sql    
 select * from books
 order by price desc limit 1;
 ```
-7) ***show all customers who ordered more than 1 quantity of a book:***
+7) ***Show all customers who ordered more than 1 quantity of a book:***
 ```sql    
 select * from orders
 where quantity > 1; 
 ```
-8) ***retrieve all orders where the total amount exceeds $20:***
+8) ***Retrieve all orders where the total amount exceeds $20:***
 ```sql    
 select * from orders
 where total_amount > 20;
 ```
-9) ***list all genres available in the books table:***
+9) ***List all genres available in the books table:***
 ```sql     
 select distinct genre from books;
 ```
-10) ***find the book with the lowest stock:***
+10) ***Find the book with the lowest stock:***
 ```sql     
 select * from books
 order by stock limit 10;
 ```
-11) ***calculate the total revenue generated from all orders:***
+11) ***Calculate the total revenue generated from all orders:***
 ```sql     
 select sum(total_amount) as total_revenue
 from orders;
 ```
-12) ***retrieve the total number of books sold for each genre:***
+12) ***Retrieve the total number of books sold for each genre:***
 ```sql     
 select b.genre , sum(o.quantity) as total_books_sold
 from orders o
@@ -139,13 +139,13 @@ join books b on c.book_id = b.book_id
 group by b.genre;
 ```
 
-13) ***find the average price of books in the "fantasy" genre:***
+13) ***Find the average price of books in the "fantasy" genre:***
 ```sql     
 select avg(price) as avg_price
 from books
 where genre = 'fantasy';
 ```
-14) ***list customers who have placed at least 2 orders:***
+14) ***List customers who have placed at least 2 orders:***
 ```sql     
 select o.customer_id, c.name, count(o.order_id) as order_count
 from orders o
@@ -153,7 +153,7 @@ join customers c on c.customer_id = o.customer_id
 group by o.customer_id, c.name
 having count(order_id) >= 2;
 ```
-15) ***find the most frequently ordered book:***
+15) ***Find the most frequently ordered book:***
 ```sql     
 select o.book_id,b.title, count(o.order_id) as orderd_books
 from orders o
@@ -163,7 +163,7 @@ order by orderd_books
 desc
 limit 1;
 ```
-16) ***show the top 3 most expensive books of 'fantasy' genre:***
+16) ***Show the top 3 most expensive books of 'fantasy' genre:***
 ```sql     
 select *
 from books
@@ -173,7 +173,7 @@ desc
 limit 1;
 ```
 
-17) ***retrieve the total quantity of books sold by each author:***
+17) ***Retrieve the total quantity of books sold by each author:***
 ```sql     
 select distinct b.author, sum(o.quantity)
 from orders o
@@ -182,7 +182,7 @@ group by b.author,o.quantity
 order by sum(o.quantity)
 desc;
 ```
-18) ***list the cities where customers who spent over $30 are located:***
+18) ***List the cities where customers who spent over $30 are located:***
 ```sql     
 select distinct(c.city), o.total_amount, c.name
 from customers c
@@ -191,7 +191,7 @@ group by c.city, o.total_amount, c.name
 --order by o.total_amount
 having o.total_amount > 30;
 ```
-19) ***find the customer who spent the most on orders:***
+19) ***Find the customer who spent the most on orders:***
 ```sql 
 select distinct o.customer_id, c.name, sum(o.total_amount) as most_spend
 from orders o
@@ -201,7 +201,7 @@ order by most_spend
 desc
 limit 1;
 ```
-20) ***calculate the stock remaining after fulfilling all orders:***
+20) ***Calculate the stock remaining after fulfilling all orders:***
 ```sql 
 select b.book_id, b.title, b.stock, coalesce(sum(o.quantity),0) as total_quantity,
 b.stock - coalesce(sum(o.quantity),0) as remaining_quantity
@@ -213,23 +213,23 @@ order by b.book_id;
 
 # Findings
 
-1.***Customer Demographics:*** Customers come from different regions, including Canada, contributing to diverse sales patterns.
-2.***Sales Trends:*** Orders peak during certain months (e.g., November 2023). Some genres like Fantasy and Fiction perform strongly.
-3.***High-Value Orders:*** Several orders exceeded $20, showing premium purchases.
-4.***Stock Insights:*** Some books have very low stock, highlighting inventory risks.
+1. ***Customer Demographics:*** Customers come from different regions, including Canada, contributing to diverse sales patterns.<br>
+2. ***Sales Trends:*** Orders peak during certain months (e.g., November 2023). Some genres like Fantasy and Fiction perform strongly.<br>
+3. ***High-Value Orders:*** Several orders exceeded $20, showing premium purchases.<br>
+4. ***Stock Insights:*** Some books have very low stock, highlighting inventory risks.<br>
 
 # Reports
 
-1.***Sales Summary:*** Total revenue, stock availability, and genre distribution.
-2.***Trend Analysis:*** Insights into sales by month and most frequently ordered books.
-3.***Customer Insights:*** Top customers by spending and cities with the highest sales.
+1.***Sales Summary:*** Total revenue, stock availability, and genre distribution.<br>
+2.***Trend Analysis:*** Insights into sales by month and most frequently ordered books.<br>
+3.***Customer Insights:*** Top customers by spending and cities with the highest sales.<br>
 
 # How to Use
 
-1.***Clone the Repository:*** Download or clone this project from GitHub to your local system.
-2.***Set Up the Database:*** Run the provided SQL script (online_bookstore_setup.sql) to create and populate the database.
-3.***Run the Queries:*** Execute the queries from the analysis_queries.sql file to analyze the dataset.
-4.***Explore and Modify:*** Modify the queries or add new ones to answer additional business questions.
+1. ***Clone the Repository:*** Download or clone this project from GitHub to your local system.<br>
+2. ***Set Up the Database:*** Run the provided SQL script (online_bookstore_setup.sql) to create and populate the database.<br>
+3. ***Run the Queries:*** Execute the queries from the analysis_queries.sql file to analyze the dataset.<br>
+4. ***Explore and Modify:*** Modify the queries or add new ones to answer additional business questions.<br>
 
 # Author - Anshu Kumar
 
@@ -239,9 +239,9 @@ This project is part of my portfolio, showcasing the SQL skills essential for da
 
 For more content on SQL, data analysis, and other data-related topics, make sure to follow me on social media and join our community:
 
-***Instagram:*** Follow me for daily tips and updates
-***LinkedIn:*** Connect with me professionally
-***Discord:*** Join our community to learn and grow together
+1. ***Instagram:*** Follow me for daily tips and updates<br>
+2. ***LinkedIn:*** Connect with me professionally<br>
+3. ***Discord:*** Join our community to learn and grow together<br>
 
 ***Thank you for your support, and I look forward to connecting with you!***
 
