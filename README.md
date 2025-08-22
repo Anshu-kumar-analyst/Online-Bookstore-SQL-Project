@@ -240,7 +240,7 @@ This project is part of my portfolio, showcasing the SQL skills essential for da
 For more content on SQL, data analysis, and other data-related topics, make sure to follow me on social media and join our community:
 
 1. ***LinkedIn:*** [Connect with me professionally](https://www.linkedin.com/in/anshu-kumar-analysts/)<br>
-2. ***Discord:*** [Join our community to learn and grow together](https://example.com)<br>
+2. ***Discord:*** [Join our community to learn and grow together](https://github.com/Anshu-kumar-analyst)<br>
 3. ***Instagram:*** [Follow me for daily tips and updates](https://www.instagram.com/me_anshu_kr/)<br>
  
 ***Thank you for your support, and I look forward to connecting with you!***
